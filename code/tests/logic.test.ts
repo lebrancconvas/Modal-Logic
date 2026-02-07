@@ -81,3 +81,25 @@ describe("Test IMPLY", () => {
     expect(imply(f, f)?.toBool()).toBe(true);
   });
 });
+
+describe("Test IF AND ONLY IF", () => {
+  test("T <-> T === T", () => {
+    expect(iff(t, t)?.value()).toBe("T");
+    expect(iff(t, t)?.toBool()).toBe(true);
+  });
+
+  test("T <-> F === F", () => {
+    expect(iff(t, f)?.value()).toBe("F");
+    expect(iff(t, f)?.toBool()).toBe(false);
+  });
+
+  test("F <-> T === F", () => {
+    expect(iff(f, t)?.value()).toBe("F");
+    expect(iff(f, t)?.toBool()).toBe(false);
+  });
+
+  test("F <-> F === T", () => {
+    expect(iff(f, f)?.value()).toBe("T");
+    expect(iff(f, f)?.toBool()).toBe(true);
+  });
+}); 

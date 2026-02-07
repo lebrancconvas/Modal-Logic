@@ -59,3 +59,25 @@ describe("Test OR", () => {
     expect(or(f, f)?.toBool()).toBe(false);
   });
 });
+
+describe("Test IMPLY", () => {
+  test("T -> T === T", () => {
+    expect(imply(t, t)?.value()).toBe("T");
+    expect(imply(t, t)?.toBool()).toBe(true);
+  });
+
+  test("T -> F === F", () => {
+    expect(imply(t, f)?.value()).toBe("F");
+    expect(imply(t, f)?.toBool()).toBe(false);
+  });
+
+  test("F -> T === T", () => {
+    expect(imply(f, t)?.value()).toBe("T");
+    expect(imply(f, t)?.toBool()).toBe(true);
+  });
+
+  test("F -> F === T", () => {
+    expect(imply(f, f)?.value()).toBe("T");
+    expect(imply(f, f)?.toBool()).toBe(true);
+  });
+});
